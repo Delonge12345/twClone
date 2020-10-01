@@ -15,6 +15,7 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 import {Tweet} from "../components/Tweet/Tweet";
+import {SideBar} from "../components/SideBar/SideBar"
 
 export const useHomeStyles = makeStyles((theme) => ({
     wrapper: {
@@ -102,60 +103,21 @@ export const Home = () => {
         <Container className={classes.wrapper} maxWidth="lg">
             <Grid container spacing={3}>
                 <Grid item xs={3}>
-                    <ul className={classes.sideMenuList}>
-                        <li>
-                            <IconButton className={classes.logo} aria-label="" color='primary'>
-                                <TwitterIcon className={classes.logoIcon} color='primary'/>
-                            </IconButton>
-                        </li>
-                        <li>
-                            <IconButton aria-label="">
-                                <SearchIcon className={classes.sideMenuListItemIcon}/>
-                            </IconButton>
-                            <Typography className={classes.sideMenuListItemLabel} variant="h6">Поиск</Typography>
-                        </li>
-                        <li>
-                            <IconButton aria-label="">
-                                <NotificationsNoneIcon className={classes.sideMenuListItemIcon}/>
-                            </IconButton>
-                            <Typography className={classes.sideMenuListItemLabel} variant="h6">Уведомления</Typography>
-                        </li>
-                        <li>
-                            <IconButton aria-label="">
-                                <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
-                            </IconButton>
-                            <Typography className={classes.sideMenuListItemLabel} variant="h6">Сообщения</Typography>
-                        </li>
-                        <li>
-                            <IconButton aria-label="">
-                                <BookmarkBorderIcon className={classes.sideMenuListItemIcon}/>
-                            </IconButton>
-                            <Typography className={classes.sideMenuListItemLabel} variant="h6">Закладки</Typography>
-                        </li>
-                        <li>
-                            <IconButton aria-label="">
-                                <ListAltIcon className={classes.sideMenuListItemIcon}/>
-                            </IconButton>
-                            <Typography className={classes.sideMenuListItemLabel} variant="h6">Список</Typography>
-                        </li>
-                        <li>
-                            <IconButton aria-label="">
-                                <PersonOutlineIcon className={classes.sideMenuListItemIcon}/>
-                            </IconButton>
-                            <Typography className={classes.sideMenuListItemLabel} variant="h6">Профиль</Typography>
-                        </li>
-                    </ul>
+                   <SideBar classes={classes}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <Tweet
-                        classes={classes}
-                        user={{
-                            fullname: 'Delonge1',
-                            avatarUrl: 'https://images.unsplash.com/profile-1533094978414-38e5903a4585?auto=format&fit=crop&w=32&h=32&q=60&crop=faces&bg=fff',
-                            username: '@delonge1',
-                            text: 'Неважно какое у тебя лицо – важно, что оно выражает. Неважно какой у тебя голос – важно как дороги твои слова. Не имеет значения как ты говоришь – твои поступки говорят сами за себя.'
-                        }}
-                    />
+                    {
+                        [...new Array(20).fill(
+                            <Tweet
+                                classes={classes}
+                                user={{
+                                    fullname: 'Delonge1',
+                                    avatarUrl: 'https://images.unsplash.com/profile-1533094978414-38e5903a4585?auto=format&fit=crop&w=32&h=32&q=60&crop=faces&bg=fff',
+                                    username: '@delonge1',
+                                    text: 'Неважно какое у тебя лицо – важно, что оно выражает. Неважно какой у тебя голос – важно как дороги твои слова. Не имеет значения как ты говоришь – твои поступки говорят сами за себя.'
+                                }}
+                        />)]
+                    }
                 </Grid>
                 <Grid item xs={3}>
                     <SearchTextField
